@@ -33,13 +33,13 @@ namespace SpiderManager.Views
             _spiderList = new ObservableCollection<Spider>();
             createExampleData();
             
-            //gr_mainGrid.DataContext = _spiderList;
             lb_spiderListBox.ItemsSource = _spiderList;
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             sp_detailsStacker.DataContext = lb_spiderListBox.SelectedItem as Spider;
+            gr_dataEventGrid.ItemsSource = (lb_spiderListBox.SelectedItem as Spider).eventList;
         }
 
         public void createExampleData()
