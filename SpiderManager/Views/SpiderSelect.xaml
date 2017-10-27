@@ -46,7 +46,7 @@
                 <TextBlock x:Name="tb_DoB" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding dateOfBirth}" VerticalAlignment="Top"/>
             </StackPanel>
         </StackPanel>
-        <DataGrid x:Name="gr_dataEventGrid" Grid.Row="0" Grid.Column="3"  HorizontalAlignment="Left" Margin="10,10,0,0"  VerticalAlignment="Top" Height="323" Width="288">
+        <DataGrid x:Name="gr_dataEventGrid" ItemsSource="{Binding}" Grid.Row="0" Grid.Column="3"  HorizontalAlignment="Left" Margin="10,10,0,0"  VerticalAlignment="Top" Height="323" Width="288">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding eventType}"/>
                 <DataGridTextColumn Header="Date" Binding="{Binding eventComment}"/>

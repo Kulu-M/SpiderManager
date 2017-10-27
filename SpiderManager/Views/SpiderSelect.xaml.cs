@@ -34,6 +34,8 @@ namespace SpiderManager.Views
             createExampleData();
             
             lb_spiderListBox.ItemsSource = _spiderList;
+            lb_spiderListBox.SelectedItem = _spiderList.First();
+            
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
