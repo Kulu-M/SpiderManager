@@ -19,9 +19,29 @@ namespace SpiderManager.Views
     /// </summary>
     public partial class AddEditAnimal : Window
     {
+        public bool justStarted = true;
         public AddEditAnimal()
         {
             InitializeComponent();
+        }
+
+        private void cb_species_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (justStarted == true)
+            {
+                justStarted = false;
+                return;
+            }
+
+            if ((cb_species.SelectedIndex) == 0)
+            {
+                MessageBox.Show("hallo");
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

@@ -92,5 +92,12 @@ namespace SpiderManager.Views
             _spiderList.Add(spider1);
             _spiderList.Add(spider2);
         }
+
+        private void b_add_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditAnimal ae = new AddEditAnimal();
+            ae.Owner = this;
+            ae.ShowDialog();
+        }
     }
 }
