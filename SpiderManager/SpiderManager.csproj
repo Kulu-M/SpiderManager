@@ -106,6 +106,7 @@
       <DependentUpon>EF-DB-Con.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Event.cs" />
+    <Compile Include="Model\Species.cs" />
     <Compile Include="Model\Spider.cs" />
     <Compile Include="Views\AddEditAnimal.xaml.cs">
       <DependentUpon>AddEditAnimal.xaml</DependentUpon>
@@ -169,7 +170,9 @@
       <DependentUpon>EF-DB-Con.edmx</DependentUpon>
     </None>
     <None Include="Database-File\S-DB.db" />
-    <None Include="Data\species.json" />
+    <None Include="Data\species.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

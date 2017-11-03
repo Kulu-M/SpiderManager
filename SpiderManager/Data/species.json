@@ -1,3 +1,4 @@
-﻿{
-  "name" :  "brac"
-}
+﻿[
+  { "name": "bla" },
+  { "name": "bla2" }
+]

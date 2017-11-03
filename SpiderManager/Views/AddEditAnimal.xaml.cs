@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SpiderManager.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +23,8 @@ namespace SpiderManager.Views
     /// </summary>
     public partial class AddEditAnimal : Window
     {
+        public ObservableCollection<Species> speciesList;
+
         public bool justStarted = true;
         public AddEditAnimal()
         {
@@ -33,6 +39,8 @@ namespace SpiderManager.Views
                 return;
             }
 
+            
+
             if ((cb_species.SelectedIndex) == 0)
             {
                 MessageBox.Show("hallo");
@@ -41,7 +49,14 @@ namespace SpiderManager.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            speciesList = new ObservableCollection<Species>(JsonConvert.DeserializeObject<List<Species>>(File.ReadAllText(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Data/species.json"))));
+
+            cb_species.ItemsSource = speciesList;
+        }
+
+        private void b_back_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

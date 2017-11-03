@@ -8,12 +8,9 @@
         Title="AddEditAnimal" Height="300" Width="300" Loaded="Window_Loaded">
     <Grid>
         <Button x:Name="b_add" Content="Save" HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="b_back" Content="Back" HorizontalAlignment="Left" Margin="207,231,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="b_back" Content="Back" HorizontalAlignment="Left" Margin="207,231,0,0" VerticalAlignment="Top" Width="75" Click="b_back_Click"/>
         <TextBox x:Name="tb_name" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="272"/>
-        <ComboBox x:Name="cb_species" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="272" SelectionChanged="cb_species_SelectionChanged">
-            <ComboBoxItem IsSelected="True">Add new...</ComboBoxItem>
-            <ComboBoxItem>ComboBox Item #2</ComboBoxItem>
-            <ComboBoxItem>ComboBox Item #3</ComboBoxItem>
+        <ComboBox x:Name="cb_species" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="272" SelectionChanged="cb_species_SelectionChanged" ItemsSource="{Binding speciesList}" DisplayMemberPath="name">
         </ComboBox>
         <Label x:Name="label" Content="Name" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label1" Content="Species" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top"/>
