@@ -61,6 +61,10 @@
                 <DataGridTextColumn Header="Date" Binding="{Binding eventComment}"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <Button Grid.Column="3" Grid.Row="1" Height="25" Width="50" Content="Add" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="b_addEvent" Click="b_addEvent_Click"></Button>
+        <Button Grid.Column="3" Grid.Row="1" Height="25" Width="50" Content="Remove" HorizontalAlignment="Right" Margin="10,10,0,0" x:Name="b_deleteEvent" Click="b_deleteEvent_Click"></Button>
+        
     </Grid>
 
 

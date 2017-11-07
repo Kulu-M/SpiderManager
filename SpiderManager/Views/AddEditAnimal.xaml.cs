@@ -32,6 +32,13 @@ namespace SpiderManager.Views
             InitializeComponent();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            speciesList = new ObservableCollection<Species>(JsonConvert.DeserializeObject<List<Species>>(File.ReadAllText(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Data/species.json"))));
+
+            cb_species.ItemsSource = speciesList;
+        }
+
         private void cb_species_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (justStarted == true)
@@ -47,15 +54,9 @@ namespace SpiderManager.Views
             }
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            speciesList = new ObservableCollection<Species>(JsonConvert.DeserializeObject<List<Species>>(File.ReadAllText(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Data/species.json"))));
-
-            cb_species.ItemsSource = speciesList;
-        }
-
         private void b_back_Click(object sender, RoutedEventArgs e)
         {
+            //TODO implement security question if user wants to close really
             this.Close();
         }
 
@@ -80,6 +81,8 @@ namespace SpiderManager.Views
             spider.dateOfBirth = (DateTime)dob_date.SelectedDate;
             App._spiderList.Add(spider);
             SafeLoad.SaveToJson();
+
+            this.Close();
         }
     }
 }

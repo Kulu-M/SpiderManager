@@ -18,6 +18,7 @@ namespace SpiderManager
     public partial class App : Application
     {
         public static ObservableCollection<Spider> _spiderList;
+        public static Event eventContainer = new Event();
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {

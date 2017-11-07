@@ -28,7 +28,6 @@ namespace SpiderManager.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //App._spiderList = new ObservableCollection<Spider>();
             //createExampleData();
             
             lb_spiderListBox.ItemsSource = App._spiderList;
@@ -77,16 +76,15 @@ namespace SpiderManager.Views
                 dateOfBirth = DateTime.Today,
                 eventList = eventList1,
                 name = "Arachno",
-                species = "Brachypelma smithi"
+                species = new Species { name = "Brachypelma Smiti"}
             };
             var spider2 = new Spider
             {
                 dateOfBirth = DateTime.Today,
                 eventList = eventList2,
                 name = "Brachno",
-                species = "Chromatopelma cyaneopubescens"
+                species = new Species { name = "Chromatopelma cyaneopubescens" }
             };
-
             App._spiderList.Add(spider1);
             App._spiderList.Add(spider2);
         }
@@ -96,6 +94,41 @@ namespace SpiderManager.Views
             AddEditAnimal ae = new AddEditAnimal();
             ae.Owner = this;
             ae.ShowDialog();
+        }
+
+        private void b_addEvent_Click(object sender, RoutedEventArgs e)
+        {
+            if (lb_spiderListBox.SelectedItem as Spider == null)
+            {
+                MessageBox.Show("Select a spider");
+                return;
+            }
+            
+            AddEditData aed = new AddEditData();
+            aed.Owner = this;
+            aed.ShowDialog();
+
+            if (App.eventContainer != null)
+            {
+                var spiderToChange = App._spiderList.FirstOrDefault
+            }
+        }
+
+        private void b_deleteEvent_Click(object sender, RoutedEventArgs e)
+        {
+            if (lb_spiderListBox.SelectedItem as Spider == null)
+            {
+                MessageBox.Show("Select a spider");
+                return;
+            }
+
+            if (gr_dataEventGrid.SelectedItem == null)
+            {
+                MessageBox.Show("Select an event");
+                return;
+            }
+
+            //TODO delte from event list
         }
     }
 }
