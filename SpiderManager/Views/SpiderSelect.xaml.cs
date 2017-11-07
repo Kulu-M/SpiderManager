@@ -21,8 +21,6 @@ namespace SpiderManager.Views
     /// </summary>
     public partial class SpiderSelect : Window
     {
-        public static ObservableCollection<Spider> _spiderList;
-
         public SpiderSelect()
         {
             InitializeComponent();
@@ -30,11 +28,11 @@ namespace SpiderManager.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            _spiderList = new ObservableCollection<Spider>();
-            createExampleData();
+            //App._spiderList = new ObservableCollection<Spider>();
+            //createExampleData();
             
-            lb_spiderListBox.ItemsSource = _spiderList;
-            lb_spiderListBox.SelectedItem = _spiderList.First();
+            lb_spiderListBox.ItemsSource = App._spiderList;
+            lb_spiderListBox.SelectedItem = App._spiderList.First();
             
         }
 
@@ -89,8 +87,8 @@ namespace SpiderManager.Views
                 species = "Chromatopelma cyaneopubescens"
             };
 
-            _spiderList.Add(spider1);
-            _spiderList.Add(spider2);
+            App._spiderList.Add(spider1);
+            App._spiderList.Add(spider2);
         }
 
         private void b_add_Click(object sender, RoutedEventArgs e)

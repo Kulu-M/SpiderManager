@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using ParentalMonitor.Classes;
 using SpiderManager.Classes;
+using System.Collections.ObjectModel;
+using SpiderManager.Model;
 
 namespace SpiderManager
 {
@@ -15,7 +17,7 @@ namespace SpiderManager
     /// </summary>
     public partial class App : Application
     {
-        public static List<Safe> _data;
+        public static ObservableCollection<Spider> _spiderList;
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {

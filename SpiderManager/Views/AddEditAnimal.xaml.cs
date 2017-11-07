@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ParentalMonitor.Classes;
 using SpiderManager.Model;
 using System;
 using System.Collections.Generic;
@@ -37,13 +38,12 @@ namespace SpiderManager.Views
             {
                 justStarted = false;
                 return;
-            }
+            }            
 
-            
-
+            //TODO implement adding a new species
             if ((cb_species.SelectedIndex) == 0)
             {
-                MessageBox.Show("hallo");
+                MessageBox.Show("Inser a new species");
             }
         }
 
@@ -57,6 +57,29 @@ namespace SpiderManager.Views
         private void b_back_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void b_add_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tb_name.Text))
+            {
+                MessageBox.Show("Enter a name!");
+            }
+            if (dob_date == null)
+            {
+                MessageBox.Show("Enter a date of birth!");
+            }
+            if (cb_species.SelectedItem == null)
+            {
+                MessageBox.Show("Select a species!");
+            }
+
+            var spider = new Spider();
+            spider.name = tb_name.Text;
+            spider.species = cb_species.SelectedItem as Species;
+            spider.dateOfBirth = (DateTime)dob_date.SelectedDate;
+            App._spiderList.Add(spider);
+            SafeLoad.SaveToJson();
         }
     }
 }
