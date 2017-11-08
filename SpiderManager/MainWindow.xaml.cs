@@ -23,6 +23,7 @@ namespace SpiderManager
     /// </summary>
     public partial class MainWindow : Window
     {
+        //DEPRECATED!
         private ObservableCollection<Animals> animalsObservable;
 
         public MainWindow()

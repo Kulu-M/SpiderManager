@@ -98,7 +98,8 @@ namespace SpiderManager.Views
 
         private void b_addEvent_Click(object sender, RoutedEventArgs e)
         {
-            if (lb_spiderListBox.SelectedItem as Spider == null)
+            var selectedSpider = lb_spiderListBox.SelectedItem as Spider;
+            if (selectedSpider == null)
             {
                 MessageBox.Show("Select a spider");
                 return;
@@ -110,23 +111,29 @@ namespace SpiderManager.Views
 
             if (App.eventContainer != null)
             {
-                var spiderToChange = App._spiderList.FirstOrDefault
+                var spiderToChange = App._spiderList.FirstOrDefault(x => x == selectedSpider);
+                spiderToChange.eventList.Add(App.eventContainer);
             }
         }
 
         private void b_deleteEvent_Click(object sender, RoutedEventArgs e)
         {
-            if (lb_spiderListBox.SelectedItem as Spider == null)
+            var selectedSpider = lb_spiderListBox.SelectedItem as Spider;
+            if (selectedSpider == null)
             {
                 MessageBox.Show("Select a spider");
                 return;
             }
 
-            if (gr_dataEventGrid.SelectedItem == null)
+            if (gr_dataEventGrid.SelectedItem as Event == null)
             {
                 MessageBox.Show("Select an event");
                 return;
             }
+
+            var spiderToChange = App._spiderList.FirstOrDefault(x => x == selectedSpider);
+            spiderToChange.eventList.Remove(gr_dataEventGrid.SelectedItem as Event);
+
 
             //TODO delte from event list
         }

@@ -22,6 +22,7 @@ namespace SpiderManager
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            _spiderList = new ObservableCollection<Spider>();
             SafeLoad.LoadFromJson();
         }
 

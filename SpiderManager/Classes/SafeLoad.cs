@@ -34,6 +34,10 @@ namespace ParentalMonitor.Classes
             try
             {
                 App._spiderList = JsonConvert.DeserializeObject<ObservableCollection<Spider>>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SaveFile.json")));
+                if (App._spiderList == null)
+                {
+                    App._spiderList = new ObservableCollection<Spider>();
+                }
             }
             catch (Exception e)
             {
