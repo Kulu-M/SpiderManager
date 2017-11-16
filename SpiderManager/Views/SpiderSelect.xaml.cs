@@ -28,8 +28,12 @@ namespace SpiderManager.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //Open the Main Window in the same size as it was when the User closed it the last time
+            this.Height = Properties.Settings.Default.WindowHeight;
+            this.Width = Properties.Settings.Default.WindowWidth;
+
             //createExampleData();
-            
+
             lb_spiderListBox.ItemsSource = App._spiderList;
             if (App._spiderList != null && App._spiderList.Count > 0)
             {
@@ -139,6 +143,13 @@ namespace SpiderManager.Views
 
 
             //TODO delte from event list
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Properties.Settings.Default.WindowHeight = this.ActualHeight;
+            Properties.Settings.Default.WindowWidth = this.ActualWidth;
+            Properties.Settings.Default.Save();
         }
     }
 }

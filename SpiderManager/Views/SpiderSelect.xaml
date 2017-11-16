@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpiderManager.Views"
         mc:Ignorable="d"
-        Title="SpiderSelect" Height="500" Width="800" Loaded="Window_Loaded">
+        Title="SpiderSelect" Height="500" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
     
     
     <Grid Name="gr_mainGrid">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
@@ -55,7 +54,7 @@
                 <TextBlock x:Name="tb_DoB" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding dateOfBirth}" VerticalAlignment="Top"/>
             </StackPanel>
         </StackPanel>
-        <DataGrid x:Name="gr_dataEventGrid" ItemsSource="{Binding}" Grid.Row="0" Grid.Column="3"  HorizontalAlignment="Left" Margin="10,10,0,0"  VerticalAlignment="Top" Height="323" Width="288">
+        <DataGrid x:Name="gr_dataEventGrid" ItemsSource="{Binding}" Grid.Row="0" Grid.Column="3"  HorizontalAlignment="Left" Margin="10,10,0,0"  VerticalAlignment="Top">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding eventType}"/>
                 <DataGridTextColumn Header="Date" Binding="{Binding eventComment}"/>
