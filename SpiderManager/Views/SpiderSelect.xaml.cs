@@ -31,8 +31,10 @@ namespace SpiderManager.Views
             //createExampleData();
             
             lb_spiderListBox.ItemsSource = App._spiderList;
-            lb_spiderListBox.SelectedItem = App._spiderList.First();
-            
+            if (App._spiderList != null && App._spiderList.Count > 0)
+            {
+                lb_spiderListBox.SelectedItem = App._spiderList.First();
+            }         
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -67,8 +69,8 @@ namespace SpiderManager.Views
                 eventType = "Futter4",
                 eventComment = "4 Schabe"
             };
-            var eventList1 = new List<Event> {e1, e2};
-            var eventList2 = new List<Event> { e3, e4 };
+            var eventList1 = new ObservableCollection<Event> {e1, e2};
+            var eventList2 = new ObservableCollection<Event> { e3, e4 };
 
 
             var spider1 = new Spider
@@ -112,8 +114,9 @@ namespace SpiderManager.Views
             if (App.eventContainer != null)
             {
                 var spiderToChange = App._spiderList.FirstOrDefault(x => x == selectedSpider);
+                if (spiderToChange.eventList == null) spiderToChange.eventList = new ObservableCollection<Event>();                
                 spiderToChange.eventList.Add(App.eventContainer);
-            }
+            }            
         }
 
         private void b_deleteEvent_Click(object sender, RoutedEventArgs e)
