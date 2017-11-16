@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Newtonsoft.Json;
 using SpiderManager;
-using SpiderManager.Classes;
 using SpiderManager.Properties;
 using System.Collections.ObjectModel;
 using SpiderManager.Model;

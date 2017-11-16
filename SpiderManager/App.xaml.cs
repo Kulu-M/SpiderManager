@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using ParentalMonitor.Classes;
-using SpiderManager.Classes;
 using System.Collections.ObjectModel;
 using SpiderManager.Model;
 

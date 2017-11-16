@@ -46,5 +46,17 @@ namespace SpiderManager.Properties {
                 this["WindowWidth"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int DaysToRemindToFeed {
+            get {
+                return ((int)(this["DaysToRemindToFeed"]));
+            }
+            set {
+                this["DaysToRemindToFeed"] = value;
+            }
+        }
     }
 }

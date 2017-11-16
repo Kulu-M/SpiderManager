@@ -43,6 +43,7 @@ namespace SpiderManager.Views
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (lb_spiderListBox.SelectedItem as Spider == null) return;
             sp_detailsStacker.DataContext = lb_spiderListBox.SelectedItem as Spider;
             gr_dataEventGrid.ItemsSource = (lb_spiderListBox.SelectedItem as Spider).eventList;
         }
@@ -150,6 +151,23 @@ namespace SpiderManager.Views
             Properties.Settings.Default.WindowHeight = this.ActualHeight;
             Properties.Settings.Default.WindowWidth = this.ActualWidth;
             Properties.Settings.Default.Save();
+        }
+
+        private void b_remove_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult msgResult = MessageBox.Show("Are you sure?", "Delete?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            switch (msgResult)
+            {
+                case MessageBoxResult.Yes:
+                    var selectedSpider = lb_spiderListBox.SelectedItem as Spider;
+                    if (selectedSpider != null)
+                    {
+                        App._spiderList.Remove(selectedSpider);
+                    }
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
         }
     }
 }
