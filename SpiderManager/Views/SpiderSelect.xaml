@@ -4,14 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpiderManager.Views"
-        xmlns:converters="clr-namespace:SpiderManager.Converters"
         mc:Ignorable="d"
-        Title="SpiderSelect" Height="500" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
-
-    <Window.Resources>
-        <converters:FeedingTimeToColorInListConverter x:Key="FeedingTimeToColorInListConverter"></converters:FeedingTimeToColorInListConverter>
-    </Window.Resources>
-
+        Title="SpiderSelect" MinHeight="200" MinWidth="500" Height="200" Width="500" Loaded="Window_Loaded" Closing="Window_Closing">
 
     <Grid Name="gr_mainGrid">
 
@@ -32,7 +26,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding name}" Foreground="{Binding color, Converter={StaticResource FeedingTimeToColorInListConverter}}" />
+                        <TextBlock Text="{Binding name}" Foreground="{Binding color}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

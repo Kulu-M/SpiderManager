@@ -9,12 +9,13 @@ namespace SpiderManager.Classes
 {
     public static class CalculateFeedingTime
     {
-        public static DateTime? calculateFeedingTime(Spider spider)
+        public static bool needToFeed(Spider spider)
         {
-   
-            if (spider == null || spider.eventList == null || spider.eventList.Count < 1) return null;
-            var latestDate = spider.eventList.Max(d => d.eventTime);
-            return null;
+            if (spider == null || spider.eventList == null || spider.eventList.Count < 1) return false;
+            var lastFeedingDate = spider.eventList.Max(d => d.eventTime);
+
+            if ((DateTime.Now - lastFeedingDate).TotalDays < Properties.Settings.Default.DaysToRemindToFeed) return false;
+            return true;            
         }
     }
 }

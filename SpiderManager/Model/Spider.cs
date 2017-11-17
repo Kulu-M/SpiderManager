@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using SpiderManager.Classes;
 
 namespace SpiderManager.Model
 {
@@ -14,6 +15,17 @@ namespace SpiderManager.Model
         public Species species { get; set; }
         public DateTime dateOfBirth { get; set; }
         public ObservableCollection<Event> eventList { get; set; }
-        public Brush color { get; set; }
+        public Brush color
+        {
+            get
+            {
+                if (CalculateFeedingTime.needToFeed(this) == true)
+                {
+                    return Brushes.Red;
+                }                
+                return Brushes.Black;
+            }
+            set { }
+        }
     }
 }
