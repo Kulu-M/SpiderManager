@@ -21,8 +21,10 @@ namespace SpiderManager.Model
             {
                 if (CalculateFeedingTime.needToFeed(this) == true)
                 {
+                    color = Brushes.Red;
                     return Brushes.Red;
-                }                
+                }
+                color = Brushes.Black;
                 return Brushes.Black;
             }
             set { }
