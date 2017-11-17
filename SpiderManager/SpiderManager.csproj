@@ -83,7 +83,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\CalculateFeedingTime.cs" />
-    <Compile Include="Converters\FeedingTimeToColorInListConverter.cs" />
     <Compile Include="Model\Event.cs" />
     <Compile Include="Model\Species.cs" />
     <Compile Include="Model\Spider.cs" />
