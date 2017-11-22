@@ -7,15 +7,25 @@ using System.Threading.Tasks;
 
 namespace SpiderManager.Classes
 {
-    public static class CalculateFeedingTime
+    public static class CalculateLastEventTimes
     {
+        public static DateTime calculateLastFeedingTime(Spider spider)
+        {
+            if (spider == null || spider.eventList == null || spider.eventList.Count < 1 || (from e in spider.eventList where e.eventType == "Feed" select e).Count() == 0) return DateTime.MinValue;
+            return (from e in spider.eventList where e.eventType == "Feed" select e.eventTime).Max();
+        }
+
         public static bool needToFeed(Spider spider)
         {
-            if (spider == null || spider.eventList == null || spider.eventList.Count < 1) return false;
-            var lastFeedingDate = spider.eventList.Max(d => d.eventTime);
-
+            var lastFeedingDate = calculateLastFeedingTime(spider);
             if ((DateTime.Now - lastFeedingDate).TotalDays < Properties.Settings.Default.DaysToRemindToFeed) return false;
             return true;            
+        }
+
+        public static DateTime calculateLastMoldingTime(Spider spider)
+        {
+            if (spider == null || spider.eventList == null || spider.eventList.Count < 1 || (from e in spider.eventList where e.eventType == "Mold" select e).Count() == 0) return DateTime.MinValue;
+            return (from e in spider.eventList where e.eventType == "Mold" select e.eventTime).Max();
         }
     }
 }

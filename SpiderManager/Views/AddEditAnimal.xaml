@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpiderManager.Views"
         mc:Ignorable="d"
-        Title="AddEditAnimal" Height="300" Width="300" Loaded="Window_Loaded">
+        Title="AddEditAnimal" Height="300" Width="310" Loaded="Window_Loaded">
     <Grid>
         <Button x:Name="b_add" Content="Save" HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top" Width="75" Click="b_add_Click"/>
         <Button x:Name="b_back" Content="Back" HorizontalAlignment="Left" Margin="207,231,0,0" VerticalAlignment="Top" Width="75" Click="b_back_Click"/>
