@@ -121,7 +121,8 @@ namespace SpiderManager.Views
                 var spiderToChange = App._spiderList.FirstOrDefault(x => x == selectedSpider);
                 if (spiderToChange.eventList == null) spiderToChange.eventList = new ObservableCollection<Event>();                
                 spiderToChange.eventList.Add(App.eventContainer);
-            }            
+            }
+            lb_spiderListBox.Items.Refresh();
         }
 
         private void b_deleteEvent_Click(object sender, RoutedEventArgs e)
@@ -142,7 +143,7 @@ namespace SpiderManager.Views
             var spiderToChange = App._spiderList.FirstOrDefault(x => x == selectedSpider);
             spiderToChange.eventList.Remove(gr_dataEventGrid.SelectedItem as Event);
 
-
+            lb_spiderListBox.Items.Refresh();
             //TODO delte from event list
         }
 

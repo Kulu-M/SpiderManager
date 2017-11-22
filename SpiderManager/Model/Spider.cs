@@ -6,28 +6,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using SpiderManager.Classes;
+using System.ComponentModel;
 
 namespace SpiderManager.Model
 {
-    public class Spider
+    public class Spider : INotifyPropertyChanged
     {
         public string name { get; set; }
         public Species species { get; set; }
         public DateTime dateOfBirth { get; set; }
         public ObservableCollection<Event> eventList { get; set; }
+        private Brush _color;
         public Brush color
         {
-            get
-            {
+            get {
                 if (CalculateFeedingTime.needToFeed(this) == true)
                 {
-                    color = Brushes.Red;
-                    return Brushes.Red;
+                    _color = Brushes.Red;
+                    return _color;
                 }
-                color = Brushes.Black;
-                return Brushes.Black;
+                _color = Brushes.Black;
+                return _color;
             }
             set { }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
