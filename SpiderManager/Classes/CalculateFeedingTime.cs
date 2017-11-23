@@ -19,7 +19,7 @@ namespace SpiderManager.Classes
         {
             var lastFeedingDate = calculateLastFeedingTime(spider);
             if (lastFeedingDate == DateTime.MinValue) return false;
-            if ((DateTime.Now - lastFeedingDate).TotalDays < Properties.Settings.Default.DaysToRemindToFeed) return false;
+            if ((DateTime.Now - lastFeedingDate).TotalDays < spider.feedingInterval) return false;
             return true;            
         }
 

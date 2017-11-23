@@ -51,6 +51,7 @@
                 <TextBlock Text="Date of Birth:"/>
                 <TextBlock Text="Last feed:"/>
                 <TextBlock Text="Last mold:"/>
+                <TextBlock Text="Feeding Interval:"/>
             </StackPanel>
             <StackPanel Margin="10,0,0,0" x:Name="sp_detailsStacker">
                 <TextBlock x:Name="tb_name" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding name}" VerticalAlignment="Top"/>
@@ -58,6 +59,7 @@
                 <TextBlock x:Name="tb_DoB" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding dateOfBirth, StringFormat=dd-MM-yyyy, Converter={StaticResource dateConverter}}" VerticalAlignment="Top"/>
                 <TextBlock x:Name="tb_lastFeed" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding lastFed, StringFormat=dd-MM-yyyy, Converter={StaticResource dateConverter}}" VerticalAlignment="Top" Foreground="{Binding color, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock x:Name="tb_lastMold" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding lastMold, StringFormat=dd-MM-yyyy, Converter={StaticResource dateConverter}}" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tb_feedingInterval" HorizontalAlignment="Left" Text="{Binding feedingInterval}" />
             </StackPanel>
         </StackPanel>
         <DataGrid x:Name="gr_dataEventGrid" ItemsSource="{Binding}" Grid.Row="0" Grid.Column="3"  HorizontalAlignment="Stretch" Margin="10,10,20,0"  VerticalAlignment="Stretch">

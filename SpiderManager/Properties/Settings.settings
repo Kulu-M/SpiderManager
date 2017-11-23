@@ -8,8 +8,5 @@
     <Setting Name="WindowWidth" Type="System.Double" Scope="User">
       <Value Profile="(Default)">500</Value>
     </Setting>
-    <Setting Name="DaysToRemindToFeed" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">3</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

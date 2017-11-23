@@ -16,6 +16,7 @@ namespace SpiderManager.Model
         public Species species { get; set; }
         public DateTime dateOfBirth { get; set; }
         public ObservableCollection<Event> eventList { get; set; }
+        public int feedingInterval { get; set; }
         public DateTime lastFed
         {
             get

@@ -65,24 +65,42 @@ namespace SpiderManager.Views
             if (string.IsNullOrWhiteSpace(tb_name.Text))
             {
                 MessageBox.Show("Enter a name!");
+                return;
             }
             if (dob_date == null)
             {
                 MessageBox.Show("Enter a date of birth!");
+                return;
             }
             if (cb_species.SelectedItem == null)
             {
                 MessageBox.Show("Select a species!");
+                return;
+            }
+            if (string.IsNullOrEmpty(tb_feedingInterval.Text))
+            {
+                MessageBox.Show("Enter a feeding Interval!");
+                return;
             }
 
-            var spider = new Spider();
-            spider.name = tb_name.Text;
-            spider.species = cb_species.SelectedItem as Species;
-            spider.dateOfBirth = (DateTime)dob_date.SelectedDate;
-            App._spiderList.Add(spider);
-            SafeLoad.SaveToJson();
+            int f = 0;
 
-            this.Close();
+            if (Int32.TryParse(tb_feedingInterval.Text, out f))
+            {
+                var spider = new Spider();
+                spider.name = tb_name.Text;
+                spider.species = cb_species.SelectedItem as Species;
+                spider.dateOfBirth = (DateTime)dob_date.SelectedDate;
+                spider.feedingInterval = f;
+                App._spiderList.Add(spider);
+                SafeLoad.SaveToJson();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Enter a valid feeding Interval!");
+                return;
+            }
         }
     }
 }
