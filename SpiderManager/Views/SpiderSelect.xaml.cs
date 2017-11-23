@@ -32,8 +32,6 @@ namespace SpiderManager.Views
             this.Height = Properties.Settings.Default.WindowHeight;
             this.Width = Properties.Settings.Default.WindowWidth;
 
-            //createExampleData();
-
             lb_spiderListBox.ItemsSource = App._spiderList;
             if (App._spiderList != null && App._spiderList.Count > 0)
             {
