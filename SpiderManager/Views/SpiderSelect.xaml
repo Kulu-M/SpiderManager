@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpiderManager.Views"
+        xmlns:l="clr-namespace:SpiderManager.Converters"
         mc:Ignorable="d"
         Title="SpiderSelect" MinHeight="200" MinWidth="500" Height="200" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
+
+    <Window.Resources>
+        <l:DateConverter x:Key="dateConverter" />
+    </Window.Resources>
 
     <Grid Name="gr_mainGrid">
 
@@ -50,9 +55,9 @@
             <StackPanel Margin="10,0,0,0" x:Name="sp_detailsStacker">
                 <TextBlock x:Name="tb_name" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding name}" VerticalAlignment="Top"/>
                 <TextBlock x:Name="tb_species" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding species.name}" VerticalAlignment="Top"/>
-                <TextBlock x:Name="tb_DoB" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding dateOfBirth, StringFormat=dd-MM-yyyy}" VerticalAlignment="Top"/>
-                <TextBlock x:Name="tb_lastFeed" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding lastFed, StringFormat=dd-MM-yyyy}" VerticalAlignment="Top" Foreground="{Binding color, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBlock x:Name="tb_lastMold" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding lastMold, StringFormat=dd-MM-yyyy}" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tb_DoB" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding dateOfBirth, StringFormat=dd-MM-yyyy, Converter={StaticResource dateConverter}}" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tb_lastFeed" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding lastFed, StringFormat=dd-MM-yyyy, Converter={StaticResource dateConverter}}" VerticalAlignment="Top" Foreground="{Binding color, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock x:Name="tb_lastMold" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding lastMold, StringFormat=dd-MM-yyyy, Converter={StaticResource dateConverter}}" VerticalAlignment="Top"/>
             </StackPanel>
         </StackPanel>
         <DataGrid x:Name="gr_dataEventGrid" ItemsSource="{Binding}" Grid.Row="0" Grid.Column="3"  HorizontalAlignment="Stretch" Margin="10,10,20,0"  VerticalAlignment="Stretch">
