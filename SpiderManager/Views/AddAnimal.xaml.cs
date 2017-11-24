@@ -22,12 +22,12 @@ namespace SpiderManager.Views
     /// <summary>
     /// Interaction logic for AddEditAnimal.xaml
     /// </summary>
-    public partial class AddEditAnimal : Window
+    public partial class AddAnimal : Window
     {
         public ObservableCollection<Species> speciesList;
 
         public bool justStarted = true;
-        public AddEditAnimal()
+        public AddAnimal()
         {
             InitializeComponent();
         }
@@ -35,7 +35,6 @@ namespace SpiderManager.Views
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             speciesList = new ObservableCollection<Species>(JsonConvert.DeserializeObject<List<Species>>(File.ReadAllText(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Data/species.json"))));
-
             cb_species.ItemsSource = speciesList;
         }
 
@@ -50,7 +49,7 @@ namespace SpiderManager.Views
             //TODO implement adding a new species
             if ((cb_species.SelectedIndex) == 0)
             {
-                MessageBox.Show("Inser a new species");
+                MessageBox.Show("Insert a new species");
             }
         }
 

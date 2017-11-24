@@ -21,11 +21,11 @@ namespace SpiderManager.Views
     /// <summary>
     /// Interaction logic for AddEditData.xaml
     /// </summary>
-    public partial class AddEditData : Window
+    public partial class AddData : Window
     {
         public ObservableCollection<string> eventTypes;
 
-        public AddEditData()
+        public AddData()
         {
             InitializeComponent();
         }
@@ -64,6 +64,7 @@ namespace SpiderManager.Views
 
         private void b_back_Click(object sender, RoutedEventArgs e)
         {
+            App.eventContainer = null;
             this.Close();
         }
 

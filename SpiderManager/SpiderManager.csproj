@@ -90,29 +90,36 @@
     <Compile Include="Model\Event.cs" />
     <Compile Include="Model\Species.cs" />
     <Compile Include="Model\Spider.cs" />
-    <Compile Include="Views\AddEditAnimal.xaml.cs">
-      <DependentUpon>AddEditAnimal.xaml</DependentUpon>
+    <Compile Include="Views\EditAnimal.xaml.cs">
+      <DependentUpon>EditAnimal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddEditData.xaml.cs">
-      <DependentUpon>AddEditData.xaml</DependentUpon>
+    <Compile Include="Views\AddAnimal.xaml.cs">
+      <DependentUpon>AddAnimal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SpiderSelect.xaml.cs">
-      <DependentUpon>SpiderSelect.xaml</DependentUpon>
+    <Compile Include="Views\AddData.xaml.cs">
+      <DependentUpon>AddData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\SafeLoad.cs" />
-    <Page Include="Views\AddEditAnimal.xaml">
+    <Page Include="Views\EditAnimal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AddAnimal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddEditData.xaml">
+    <Page Include="Views\AddData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SpiderSelect.xaml">
+    <Page Include="Views\Main.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

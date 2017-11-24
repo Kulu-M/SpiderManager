@@ -19,9 +19,9 @@ namespace SpiderManager.Views
     /// <summary>
     /// Interaction logic for SpiderSelect.xaml
     /// </summary>
-    public partial class SpiderSelect : Window
+    public partial class Main : Window
     {
-        public SpiderSelect()
+        public Main()
         {
             InitializeComponent();
         }
@@ -48,9 +48,25 @@ namespace SpiderManager.Views
 
         private void b_add_Click(object sender, RoutedEventArgs e)
         {
-            AddEditAnimal ae = new AddEditAnimal();
+            AddAnimal ae = new AddAnimal();
             ae.Owner = this;
             ae.ShowDialog();
+        }
+
+        private void b_edit_Click(object sender, RoutedEventArgs e)
+        {
+            if (lb_spiderListBox.SelectedItem as Spider == null)
+            {
+                MessageBox.Show("Select a Spider!");
+                return;
+            }
+            
+            App.spiderContainer = lb_spiderListBox.SelectedItem as Spider;
+            EditAnimal ea = new EditAnimal();
+            ea.Owner = this;
+            ea.ShowDialog();
+
+            App.spiderContainer = null;
         }
 
         private void b_addEvent_Click(object sender, RoutedEventArgs e)
@@ -62,7 +78,7 @@ namespace SpiderManager.Views
                 return;
             }
             
-            AddEditData aed = new AddEditData();
+            AddData aed = new AddData();
             aed.Owner = this;
             aed.ShowDialog();
 
@@ -71,6 +87,11 @@ namespace SpiderManager.Views
                 var spiderToChange = App._spiderList.FirstOrDefault(x => x == selectedSpider);
                 if (spiderToChange.eventList == null) spiderToChange.eventList = new ObservableCollection<Event>();                
                 spiderToChange.eventList.Add(App.eventContainer);
+            }
+
+            if (gr_dataEventGrid.ItemsSource == null)
+            {
+                gr_dataEventGrid.ItemsSource = (lb_spiderListBox.SelectedItem as Spider).eventList;
             }
             lb_spiderListBox.Items.Refresh();
         }
@@ -120,5 +141,7 @@ namespace SpiderManager.Views
                     break;
             }
         }
+
+        
     }
 }
