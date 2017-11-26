@@ -57,7 +57,7 @@ namespace SpiderManager.Views
         public void startDateCheckerTimer()
         {
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(Properties.Settings.Default.DateCheckThreadingTime);
+            timer.Interval = TimeSpan.FromMinutes(Properties.Settings.Default.DateCheckThreadingTime);
             timer.Tick += dateTimer_Tick;
             timer.Start();
         }

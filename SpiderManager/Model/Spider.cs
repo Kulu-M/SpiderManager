@@ -25,11 +25,11 @@ namespace SpiderManager.Model
             }
             set { }
         }
-        public DateTime lastMold
+        public DateTime lastMolt
         {
             get
             {
-                return CalculateLastEventTimes.calculateLastMoldingTime(this);
+                return CalculateLastEventTimes.calculateLastMoltingTime(this);
             }
             set { }
         }

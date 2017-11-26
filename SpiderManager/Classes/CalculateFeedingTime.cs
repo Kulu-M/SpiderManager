@@ -23,10 +23,10 @@ namespace SpiderManager.Classes
             return true;            
         }
 
-        public static DateTime calculateLastMoldingTime(Spider spider)
+        public static DateTime calculateLastMoltingTime(Spider spider)
         {
-            if (spider == null || spider.eventList == null || spider.eventList.Count < 1 || (from e in spider.eventList where e.eventType == "Mold" select e).Count() == 0) return DateTime.MinValue;
-            return (from e in spider.eventList where e.eventType == "Mold" select e.eventTime).Max();
+            if (spider == null || spider.eventList == null || spider.eventList.Count < 1 || (from e in spider.eventList where e.eventType == "Molt" select e).Count() == 0) return DateTime.MinValue;
+            return (from e in spider.eventList where e.eventType == "Molt" select e.eventTime).Max();
         }
     }
 }
