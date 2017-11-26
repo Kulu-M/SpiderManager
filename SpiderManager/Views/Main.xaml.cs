@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SpiderManager.Model;
+using System.Threading;
+using SpiderManager.Classes;
+using System.Windows.Threading;
 
 namespace SpiderManager.Views
 {
@@ -21,6 +24,8 @@ namespace SpiderManager.Views
     /// </summary>
     public partial class Main : Window
     {
+        #region Startup
+
         public Main()
         {
             InitializeComponent();
@@ -28,6 +33,8 @@ namespace SpiderManager.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Properties.Settings.Default.Date = DateTime.Today;
+
             //Open the Main Window in the same size as it was when the User closed it the last time
             this.Height = Properties.Settings.Default.WindowHeight;
             this.Width = Properties.Settings.Default.WindowWidth;
@@ -36,8 +43,51 @@ namespace SpiderManager.Views
             if (App._spiderList != null && App._spiderList.Count > 0)
             {
                 lb_spiderListBox.SelectedItem = App._spiderList.First();
-            }         
+            }
+
+            startDateCheckerTimer();
         }
+
+        #endregion Startup
+
+        #region DateCheckerTimer
+
+        public static DispatcherTimer timer;
+
+        public void startDateCheckerTimer()
+        {
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(Properties.Settings.Default.DateCheckThreadingTime);
+            timer.Tick += dateTimer_Tick;
+            timer.Start();
+        }
+
+        public void stopDateCheckerTimer()
+        {
+            timer.Stop();
+        }
+
+        void dateTimer_Tick(object sender, EventArgs e)
+        {
+            if (dateChanged())
+            {
+                Properties.Settings.Default.Date = DateTime.Today;
+                lb_spiderListBox.Items.Refresh();
+            }
+        }
+
+        public bool dateChanged()
+        {
+            if (Properties.Settings.Default.Date != DateTime.Today)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        #endregion DateCheckerTimer
+
+        #region SpiderList
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -46,7 +96,7 @@ namespace SpiderManager.Views
             gr_dataEventGrid.ItemsSource = (lb_spiderListBox.SelectedItem as Spider).eventList;
         }
 
-        private void b_add_Click(object sender, RoutedEventArgs e)
+        private void b_add_spider_Click(object sender, RoutedEventArgs e)
         {
             AddAnimal ae = new AddAnimal();
             ae.Owner = this;
@@ -60,7 +110,7 @@ namespace SpiderManager.Views
                 MessageBox.Show("Select a Spider!");
                 return;
             }
-            
+
             App.spiderContainer = lb_spiderListBox.SelectedItem as Spider;
             EditAnimal ea = new EditAnimal();
             ea.Owner = this;
@@ -68,6 +118,27 @@ namespace SpiderManager.Views
 
             App.spiderContainer = null;
         }
+
+        private void b_remove_spider_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult msgResult = MessageBox.Show("Are you sure?", "Delete?", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            switch (msgResult)
+            {
+                case MessageBoxResult.Yes:
+                    var selectedSpider = lb_spiderListBox.SelectedItem as Spider;
+                    if (selectedSpider != null)
+                    {
+                        App._spiderList.Remove(selectedSpider);
+                    }
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
+        }
+
+        #endregion SpiderList
+
+        #region EventList
 
         private void b_addEvent_Click(object sender, RoutedEventArgs e)
         {
@@ -77,7 +148,7 @@ namespace SpiderManager.Views
                 MessageBox.Show("Select a spider");
                 return;
             }
-            
+
             AddData aed = new AddData();
             aed.Owner = this;
             aed.ShowDialog();
@@ -85,7 +156,7 @@ namespace SpiderManager.Views
             if (App.eventContainer != null)
             {
                 var spiderToChange = App._spiderList.FirstOrDefault(x => x == selectedSpider);
-                if (spiderToChange.eventList == null) spiderToChange.eventList = new ObservableCollection<Event>();                
+                if (spiderToChange.eventList == null) spiderToChange.eventList = new ObservableCollection<Event>();
                 spiderToChange.eventList.Add(App.eventContainer);
             }
 
@@ -118,6 +189,10 @@ namespace SpiderManager.Views
             //TODO delte from event list
         }
 
+        #endregion EventList
+        
+        #region Closing
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Properties.Settings.Default.WindowHeight = this.ActualHeight;
@@ -125,23 +200,6 @@ namespace SpiderManager.Views
             Properties.Settings.Default.Save();
         }
 
-        private void b_remove_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult msgResult = MessageBox.Show("Are you sure?", "Delete?", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            switch (msgResult)
-            {
-                case MessageBoxResult.Yes:
-                    var selectedSpider = lb_spiderListBox.SelectedItem as Spider;
-                    if (selectedSpider != null)
-                    {
-                        App._spiderList.Remove(selectedSpider);
-                    }
-                    break;
-                case MessageBoxResult.No:
-                    break;
-            }
-        }
-
-        
+        #endregion Closing
     }
 }

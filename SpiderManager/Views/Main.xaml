@@ -37,9 +37,9 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Button x:Name="b_add" Content="Add" Height="25" Width="50" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="10,10,0,0" Click="b_add_Click"/>
+        <Button x:Name="b_add" Content="Add" Height="25" Width="50" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="10,10,0,0" Click="b_add_spider_Click"/>
         <Button x:Name="b_edit" Content="Edit" Height="25" Width="50" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Margin="0,10,0,0" Click="b_edit_Click"/>
-        <Button x:Name="b_remove" Content="Remove" Height="25" Width="50" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Margin="0,10,10,0" Click="b_remove_Click"/>
+        <Button x:Name="b_remove" Content="Remove" Height="25" Width="50" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Margin="0,10,10,0" Click="b_remove_spider_Click"/>
         
 
 
