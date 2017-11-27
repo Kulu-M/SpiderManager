@@ -86,6 +86,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\CalculateFeedingTime.cs" />
+    <Compile Include="Classes\FeedingReminder.cs" />
     <Compile Include="Converters\DateConverter.cs" />
     <Compile Include="Model\Event.cs" />
     <Compile Include="Model\Species.cs" />

@@ -8,6 +8,7 @@ using System.Windows;
 using ParentalMonitor.Classes;
 using System.Collections.ObjectModel;
 using SpiderManager.Model;
+using SpiderManager.Classes;
 
 namespace SpiderManager
 {
@@ -28,6 +29,7 @@ namespace SpiderManager
 
         private void Application_Exit(object sender, ExitEventArgs e)
         {
+            FeedingReminder.clearFeedingList();
             SafeLoad.SaveToJson();
         }
     }

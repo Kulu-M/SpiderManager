@@ -44,7 +44,6 @@ namespace SpiderManager.Views
             {
                 lb_spiderListBox.SelectedItem = App._spiderList.First();
             }
-
             startDateCheckerTimer();
         }
 
@@ -57,7 +56,7 @@ namespace SpiderManager.Views
         public void startDateCheckerTimer()
         {
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMinutes(Properties.Settings.Default.DateCheckThreadingTime);
+            timer.Interval = TimeSpan.FromSeconds(Properties.Settings.Default.DateCheckThreadingTime);
             timer.Tick += dateTimer_Tick;
             timer.Start();
         }
@@ -74,6 +73,7 @@ namespace SpiderManager.Views
                 Properties.Settings.Default.Date = DateTime.Today;
                 lb_spiderListBox.Items.Refresh();
             }
+            FeedingReminder.showFeedingReminder();
         }
 
         public bool dateChanged()
