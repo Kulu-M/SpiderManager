@@ -63,7 +63,7 @@
                 <TextBlock x:Name="tb_feedingInterval" HorizontalAlignment="Left" Text="{Binding feedingInterval}" />
             </StackPanel>
         </StackPanel>
-        <DataGrid x:Name="gr_dataEventGrid" ItemsSource="{Binding}" Grid.Row="0" Grid.Column="3"  HorizontalAlignment="Stretch" Margin="10,10,20,0"  VerticalAlignment="Stretch">
+        <DataGrid x:Name="gr_dataEventGrid" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Stretch" Margin="10,10,20,0" AutoGenerateColumns="false" VerticalAlignment="Stretch">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Event Type" Binding="{Binding eventType}"/>
                 <DataGridTextColumn Header="Date" Binding="{Binding eventTime}"/>

@@ -91,6 +91,7 @@
     <Compile Include="Model\Event.cs" />
     <Compile Include="Model\Species.cs" />
     <Compile Include="Model\Spider.cs" />
+    <Compile Include="ViewModel\SpiderVM.cs" />
     <Compile Include="Views\EditAnimal.xaml.cs">
       <DependentUpon>EditAnimal.xaml</DependentUpon>
     </Compile>

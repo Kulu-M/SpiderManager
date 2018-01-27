@@ -15,7 +15,7 @@
 
         <Button x:Name="b_add" Content="Save" HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top" Width="75" Click="b_add_Click"/>
         <Button x:Name="b_back" Content="Back" HorizontalAlignment="Left" Margin="207,231,0,0" VerticalAlignment="Top" Width="75" Click="b_back_Click"/>
-        <TextBox x:Name="tb_eventComment" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" Text="Enter a comment..." VerticalAlignment="Top" Width="272"/>
+        <TextBox x:Name="tb_eventComment" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" Text="Enter a comment..." VerticalAlignment="Top" Width="272" MouseEnter="tb_eventComment_MouseEnter"/>
         <ComboBox x:Name="cb_eventType" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="120" Loaded="ComboBox_Loaded"/>
 
         <xctk:DateTimePicker x:Name="dtp_eventDateTime"  

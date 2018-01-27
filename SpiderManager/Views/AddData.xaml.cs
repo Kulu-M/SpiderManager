@@ -57,17 +57,20 @@ namespace SpiderManager.Views
             ev.eventType = cb_eventType.SelectedItem as string;
             ev.eventTime = (DateTime)dtp_eventDateTime.Value;
 
-            App.eventContainer = ev;
+            App._vm.eventContainer = ev;
 
             this.Close();
         }
 
         private void b_back_Click(object sender, RoutedEventArgs e)
         {
-            App.eventContainer = null;
+            App._vm.eventContainer = null;
             this.Close();
         }
 
-        
+        private void tb_eventComment_MouseEnter(object sender, MouseEventArgs e)
+        {
+            tb_eventComment.Text = "";
+        }
     }
 }

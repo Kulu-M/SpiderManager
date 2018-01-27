@@ -91,7 +91,7 @@ namespace SpiderManager.Views
                 spider.species = cb_species.SelectedItem as Species;
                 spider.dateOfBirth = (DateTime)dob_date.SelectedDate;
                 spider.feedingInterval = f;
-                App._spiderList.Add(spider);
+                App._vm.spiderList.Add(spider);
                 SafeLoad.SaveToJson();
                 this.Close();
             }

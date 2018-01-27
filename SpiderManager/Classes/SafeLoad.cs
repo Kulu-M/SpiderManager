@@ -19,7 +19,7 @@ namespace ParentalMonitor.Classes
         {
             try
             {
-                File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SaveFile.json"), JsonConvert.SerializeObject(App._spiderList));
+                File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SaveFile.json"), JsonConvert.SerializeObject(App._vm));
             }
             catch (Exception e)
             {
@@ -32,16 +32,16 @@ namespace ParentalMonitor.Classes
 
             try
             {
-                App._spiderList = JsonConvert.DeserializeObject<ObservableCollection<Spider>>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SaveFile.json")));
-                if (App._spiderList == null)
+                App._vm = JsonConvert.DeserializeObject<SpiderVM>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SaveFile.json")));
+                if (App._vm == null)
                 {
-                    App._spiderList = new ObservableCollection<Spider>();
+                    App._vm = new SpiderVM();
                 }
             }
             catch (Exception e)
             {
                 //TODO ?
-                File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SaveFile.json"), JsonConvert.SerializeObject(App._spiderList));
+                File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SaveFile.json"), JsonConvert.SerializeObject(App._vm));
                 Console.WriteLine(e);
             }
             

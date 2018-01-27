@@ -39,10 +39,10 @@ namespace SpiderManager.Views
             this.Height = Properties.Settings.Default.WindowHeight;
             this.Width = Properties.Settings.Default.WindowWidth;
 
-            lb_spiderListBox.ItemsSource = App._spiderList;
-            if (App._spiderList != null && App._spiderList.Count > 0)
+            lb_spiderListBox.ItemsSource = App._vm.spiderList;
+            if (App._vm.spiderList != null && App._vm.spiderList.Count > 0)
             {
-                lb_spiderListBox.SelectedItem = App._spiderList.First();
+                lb_spiderListBox.SelectedItem = App._vm.spiderList.First();
             }
             startDateCheckerTimer();
         }
@@ -111,12 +111,12 @@ namespace SpiderManager.Views
                 return;
             }
 
-            App.spiderContainer = lb_spiderListBox.SelectedItem as Spider;
+            App._vm.spiderContainer = lb_spiderListBox.SelectedItem as Spider;
             EditAnimal ea = new EditAnimal();
             ea.Owner = this;
             ea.ShowDialog();
 
-            App.spiderContainer = null;
+            App._vm.spiderContainer = null;
         }
 
         private void b_remove_spider_Click(object sender, RoutedEventArgs e)
@@ -128,7 +128,7 @@ namespace SpiderManager.Views
                     var selectedSpider = lb_spiderListBox.SelectedItem as Spider;
                     if (selectedSpider != null)
                     {
-                        App._spiderList.Remove(selectedSpider);
+                        App._vm.spiderList.Remove(selectedSpider);
                     }
                     break;
                 case MessageBoxResult.No:
@@ -153,11 +153,11 @@ namespace SpiderManager.Views
             aed.Owner = this;
             aed.ShowDialog();
 
-            if (App.eventContainer != null)
+            if (App._vm.eventContainer != null)
             {
-                var spiderToChange = App._spiderList.FirstOrDefault(x => x == selectedSpider);
+                var spiderToChange = App._vm.spiderList.FirstOrDefault(x => x == selectedSpider);
                 if (spiderToChange.eventList == null) spiderToChange.eventList = new ObservableCollection<Event>();
-                spiderToChange.eventList.Add(App.eventContainer);
+                spiderToChange.eventList.Add(App._vm.eventContainer);
             }
 
             if (gr_dataEventGrid.ItemsSource == null)
@@ -182,7 +182,7 @@ namespace SpiderManager.Views
                 return;
             }
 
-            var spiderToChange = App._spiderList.FirstOrDefault(x => x == selectedSpider);
+            var spiderToChange = App._vm.spiderList.FirstOrDefault(x => x == selectedSpider);
             spiderToChange.eventList.Remove(gr_dataEventGrid.SelectedItem as Event);
 
             lb_spiderListBox.Items.Refresh();

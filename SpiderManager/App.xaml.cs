@@ -17,13 +17,11 @@ namespace SpiderManager
     /// </summary>
     public partial class App : Application
     {
-        public static ObservableCollection<Spider> _spiderList;
-        public static Event eventContainer = new Event();
-        public static Spider spiderContainer = new Spider();
+        public static SpiderVM _vm = new SpiderVM();
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            _spiderList = new ObservableCollection<Spider>();
+            _vm.spiderList = new ObservableCollection<Spider>();
             SafeLoad.LoadFromJson();
         }
 
